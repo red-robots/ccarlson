@@ -1,0 +1,50 @@
+.custom-color {
+  color: #444;
+}
+.mce-widget.mce-btn[aria-label="Custom Button"] i.mce-ico {
+  position: relative;
+  background-image: none!important;
+  display: inline-block;
+}
+.mce-widget.mce-btn[aria-label="Custom Button"] i.mce-ico:before {
+  content: "\f11a";
+  font-family: dashicons;
+  display: inline-block;
+  line-height: 1;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.custom-button-element a.button {
+  display: inline-block;
+  text-decoration: none;
+  appearance: none;
+  border: 2px solid #241b94;
+  border-radius: 300px;
+  padding: 0.6em 1.5em;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #241b94!important;
+  transition: all ease .4s;
+  background-color: #FFF;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.highlightBox {
+  background: #009C89;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.mce-content-body ul > li {
+  margin-top: 10px;
+  margin-block: 10px;
+}
+
