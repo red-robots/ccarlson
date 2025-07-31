@@ -132,7 +132,7 @@ jQuery(document).ready(function ($) {
       loop: true,
       noSwiping: true,
       simulateTouch : true,
-      speed: 1000,
+      speed: 800,
       autoplay: {
         delay: 6000,
       },

@@ -1,5 +1,5 @@
-$color_primary: #191E51;
-$color_secondary: #009C89;
+$color_primary: #C1995C;
+$color_secondary: #F6F0E7;
 $color_orange: #F77822;
 // $color_link: #06d5bb;
 $color_link: #065492;
@@ -7,7 +7,8 @@ $color_text_main: #191E51;
 $color_blue: #0064B1;
 
 $font_primary: "Montserrat", serif;
-$font_secondary: "Inter", serif;
+$font_secondary: "Dynalight", cursive;
+$font_cursive: "Birthstone", cursive;
 $font_code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $font_pre: "Courier 10 Pitch", Courier, monospace;
 
@@ -16,7 +17,7 @@ $sm: 768px;
 $md: 1024px;
 $lg: 1200px;
 $xl: 1380px;
-$wrapper: 1280px;
+$wrapper: 1800px;
 //$wrapper: 1500px;
 
 @mixin xs { @media (min-width: $xs) { @content; } }

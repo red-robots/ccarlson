@@ -1,18 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Birthstone&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body {
   font-family: "Montserrat", sans-serif;
 }
-
 .custom-color {
   color: #444;
 }
-
 .mce-widget.mce-btn[aria-label="Custom Button"] i.mce-ico {
   position: relative;
-  background-image: none !important;
+  background-image: none!important;
   display: inline-block;
 }
-
 .mce-widget.mce-btn[aria-label="Custom Button"] i.mce-ico:before {
   content: "\f11a";
   font-family: dashicons;
@@ -24,30 +21,30 @@ body {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
 }
-
 .custom-button-element {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-.custom-button-element a.button {
-  display: inline-block;
-  text-decoration: none;
-  appearance: none;
-  border: 2px solid #C1995C;
-  border-radius: 0;
-  padding: 8px 20px;
-  font-family: "Birthstone", cursive;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.03em;
-  color: #000 !important;
-  transition: all ease 0.4s;
-  background-color: #FFF;
-  position: relative;
-  overflow: hidden;
-  z-index: 2;
+  
+  a.button {
+    display: inline-block;
+    text-decoration: none;
+    appearance: none;
+    border: 2px solid #C1995C;
+    border-radius: 0;
+    padding: 8px 20px;
+    font-family: "Birthstone", cursive;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    color: #000!important;
+    transition: all ease .4s;
+    background-color: #FFF;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+  }
 }
 
 .highlightBox {
@@ -63,4 +60,8 @@ body {
   margin-block: 10px;
 }
 
-/*# sourceMappingURL=editor-style.css.map */
+
+
+
+
+

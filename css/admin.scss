@@ -1,0 +1,32 @@
+.acf-field-flexible-content[data-name="flexible_content"] {
+  [data-layout="image_and_text_block"] {
+    div.acf-fields {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      div.acf-field {
+        width: 100%;
+        &.acf-field-image {
+          width: 25%;
+          .acf-image-uploader {
+            width: 100%;
+            .image-wrap {
+              max-width: 100%!important;
+              width: 100%!important;
+              img {
+                width: 100%!important;
+                height: auto;
+                min-width: unset!important;
+                min-height: unset!important;
+                max-height: unset!important;
+              }
+            }
+          }
+        }
+        &.acf-field-wysiwyg {
+          width: 74%;
+        }
+      }
+    }    
+  }
+}

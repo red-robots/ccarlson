@@ -496,7 +496,7 @@ function get_flexible_templates() {
   if($files) {
     foreach($files as $file) {
       if($file) {
-        if ( (strpos($file, 'bak') !== false) || (strpos($file, 'copy') !== false) ) {
+        if ( (strpos($file, 'bak') !== false) || (strpos($file, 'copy') !== false) || (strpos($file, '_tmp') !== false) ) {
           //Skip....
         } else {
           if (strpos($file, '.php') !== false) {

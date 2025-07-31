@@ -12,37 +12,13 @@ function js_custom_init() {
 
     $post_types = array(
       array(
-        'post_type' => 'staff',
-        'menu_name' => 'Staff',
-        'plural'    => 'Staff',
-        'single'    => 'Staff',
-        'menu_icon' => 'dashicons-groups',
+        'post_type' => 'portfolio',
+        'menu_name' => 'Portfolio',
+        'plural'    => 'Portfolio',
+        'single'    => 'Portfolio',
+        'menu_icon' => 'dashicons-format-gallery',
         'supports'  => array('title','editor','thumbnail')
       ),
-      array(
-        'post_type' => 'phonebook',
-        'menu_name' => 'Phonebook',
-        'plural'    => 'Phonebook',
-        'single'    => 'Phonebook',
-        'menu_icon' => 'dashicons-id-alt',
-        'supports'  => array('title')
-      ),
-      array(
-        'post_type' => 'events',
-        'menu_name' => 'Events',
-        'plural'    => 'Events',
-        'single'    => 'Event',
-        'menu_icon' => 'dashicons-calendar-alt',
-        'supports'  => array('title','editor','thumbnail')
-      ),
-      array(
-        'post_type' => 'webinars',
-        'menu_name' => 'Webinars',
-        'plural'    => 'Webinars',
-        'single'    => 'Webinar',
-        'menu_icon' => 'dashicons-format-video',
-        'supports'  => array('title','editor','thumbnail')
-      )
     );
     
     if($post_types) {
