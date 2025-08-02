@@ -17,7 +17,7 @@ function js_custom_init() {
         'plural'    => 'Portfolio',
         'single'    => 'Portfolio',
         'menu_icon' => 'dashicons-format-gallery',
-        'supports'  => array('title','editor','thumbnail')
+        'supports'  => array('title','editor')
       ),
     );
     
@@ -87,11 +87,11 @@ function build_taxonomies() {
 
   $post_types = array(
     array(
-      'post_type' => array('staff'),
-      'menu_name' => 'Staff Department',
-      'plural'    => 'Staff Departments',
-      'single'    => 'Staff Department',
-      'taxonomy'  => 'staff-department'
+      'post_type' => array('portfolio'),
+      'menu_name' => 'Artwork Category',
+      'plural'    => 'Artwork Categories',
+      'single'    => 'Artwork Category',
+      'taxonomy'  => 'artwork-category'
     )
   );
 
@@ -164,12 +164,12 @@ function set_custom_cpt_columns($columns) {
     $query = isset($wp_query->query) ? $wp_query->query : '';
     $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
     
-    if($post_type=='projects') {
+    if($post_type=='portfolio') {
         unset($columns['date']);
-        unset($columns['taxonomy-project-category']);
+        unset($columns['taxonomy-artwork-category']);
         $columns['title'] = __( 'Name', 'bellaworks' );
         $columns['image'] = __( 'Image', 'bellaworks' );
-        $columns['taxonomy-project-category'] = __( 'Categories', 'bellaworks' );
+        $columns['taxonomy-artwork-category'] = __( 'Category', 'bellaworks' );
         $columns['date'] = __( 'Date', 'bellaworks' );
     }
     // else if($post_type=='events') {
@@ -199,7 +199,7 @@ function custom_post_column( $column, $post_id ) {
     $query = isset($wp_query->query) ? $wp_query->query : '';
     $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
     
-    if($post_type=='projects') {
+    if($post_type=='portfolio') {
         switch ( $column ) {
           case 'image' :
             $img = get_field('main_photo',$post_id);
@@ -239,38 +239,37 @@ function custom_post_column( $column, $post_id ) {
 Taxonomy Custom Column
 manage_edit-$taxonomy_columns filter.
 */
-add_filter("manage_edit-activity-type_columns", 'theme_columns'); 
+add_filter("manage_edit-artwork-category_columns", 'theme_columns'); 
 function theme_columns($theme_columns) {
     $new_columns = array(
-        'cb' => '<input type="checkbox" />',
-        'name' => __('Name'),
-        'tax_image' => __('Image'),
-//      'description' => __('Description'),
-        'slug' => __('Slug'),
-        'posts' => __('Posts')
-        );
+      'cb' => '<input type="checkbox" />',
+      'name' => __('Name'),
+      'tax_image' => __('Image'),
+      'slug' => __('Slug'),
+      'posts' => __('Posts')
+    );
     return $new_columns;
 }
 
 
-add_filter("manage_activity-type_custom_column", 'manage_theme_columns', 10, 3);
+add_filter("manage_artwork-category_custom_column", 'manage_theme_columns', 10, 3);
 function manage_theme_columns($out, $column_name, $theme_id) {
-    $theme = get_term($theme_id, 'activity-type');
-    // switch ($column_name) {
-    //     case 'projects': 
-    //         $photo = get_field('project_image',$theme); 
-    //         $out = '<span class="tmphoto" style="display:inline-block;width:50px;height:50px;background:#e2e1e1;text-align:center;">';
-    //         if($photo) {
-    //             $out .= '<span style="display:block;width:100%;height:100%;background:url('.$photo['url'].');background-size:cover;background-position:center"></span>';
-    //         } else {
-    //             $out .= '<i class="dashicons dashicons-businessman" style="font-size:33px;position:relative;top:8px;left:-6px;opacity:0.3;"></i>';
-    //         }
-    //         $out .= '</span>';
-    //         break;
+    $theme = get_term($theme_id, 'artwork-category');
+    switch ($column_name) {
+        case 'tax_image': 
+            $photo = get_field('category_image',$theme); 
+            $out = '<span class="tmphoto" style="display:inline-block;width:50px;height:50px;background:#e2e1e1;text-align:center;">';
+            if($photo) {
+                $out .= '<span style="display:block;width:100%;height:100%;background:url('.$photo['url'].');background-size:cover;background-position:center"></span>';
+            } else {
+                $out .= '<i class="dashicons dashicons-businessman" style="font-size:33px;position:relative;top:8px;left:-6px;opacity:0.3;"></i>';
+            }
+            $out .= '</span>';
+            break;
  
-    //     default:
-    //         break;
-    // }
+        default:
+            break;
+    }
     return $out;    
 }
 

@@ -31,6 +31,12 @@ function bellaworks_scripts() {
   );
 
   wp_enqueue_script( 
+    'aos-script', 
+    'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js', 
+    array(), '2.3.4', true 
+  );
+
+  wp_enqueue_script( 
     'swiper-bundle.min', 
     'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', 
     array(), 'swiper-bundle.min', true 

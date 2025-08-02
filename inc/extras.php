@@ -170,31 +170,42 @@ function get_social_icons() {
   $links = array();
   $social_media = get_field('social_media_links','option');
   $social_types = array(
-      'facebook'  => 'fa fa-facebook',
-      'twitter'   => 'fab fa-twitter',
-      'linkedin'  => 'fab fa-linkedin',
-      'instagram' => 'fab fa-instagram',
-      'youtube'   => 'fab fa-youtube',
-      'vimeo'     => 'fab fa-vimeo',
+    'facebook'  => 'fa fa-facebook',
+    'x'         => 'fa-brands fa-x-twitter',
+    'twitter'   => 'fa-brands fa-x-twitter',
+    'linkedin'  => 'fa-brands fa-linkedin-in',
+    'instagram' => 'fa-brands fa-square-instagram',
+    'youtube'   => 'fa-brands fa-youtube',
+    'vimeo'     => 'fa-brands fa-vimeo-v',
   );
   if($social_media) {
-    foreach($social_media as $sm) {
-      $s = $sm['link'];
-      if( isset($s['url']) && $s['url'] ) {
-        $sTitle = $s['title'];
-        $sUrl = $s['url'];
-        $sTarget = $s['target'];
-        $parts = parse_url($sUrl)['host'];
-        $parts = str_replace('www.','',$parts);
-        $parts = str_replace('.com','',$parts);
-        foreach($social_types as $k=>$icon) {
-          if (strpos($parts, $k) !== false) {
-            $links[] = array(
-              'icon'=>$icon,
-              'title'=>$sTitle,
-              'url'=>$sUrl,
-              'target'=>$sTarget
-            );
+    foreach($social_media as $k=>$sm) {
+      $link = $sm['link'];
+      if($link) {
+        if (filter_var($link, FILTER_VALIDATE_EMAIL)) {
+          $icon = 'fa-solid fa-envelope';
+          $link = str_replace('mailto:','',$link);
+          $links[$k] = array(
+            'icon'=>$icon,
+            'title'=>$link,
+            'url'=>'mailto:'.$link,
+            'target'=>''
+          );
+        } else {
+          if (filter_var($link, FILTER_VALIDATE_URL)) {
+            foreach($social_types as $k=>$icon) {
+              $parts = parse_url($link)['host'];
+              $parts = str_replace('www.','',$parts);
+              $linkName = str_replace('.com','',$parts);
+              if (strpos($parts, $k) !== false) {
+                $links[$k] = array(
+                  'icon'=>$icon,
+                  'title'=>$linkName,
+                  'url'=>$link,
+                  'target'=>'_blank'
+                );
+              }
+            }
           }
         }
       }
@@ -202,6 +213,7 @@ function get_social_icons() {
   }
   return $links;
 }
+
 
 function parse_external_url( $url = '', $internal_class = 'internal-link', $external_class = 'external-link') {
 

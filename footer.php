@@ -2,98 +2,76 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
     <?php  
-    $contact_details = get_field('contact_details','option');
-    $map_embed = get_field('map_embed','option');
-    $social_icons = get_social_icons();
-    global $post;
-    $is_contact_us = ( isset($post->post_name) && $post->post_name=='contact' ) ? true : false;
+    $quickLinks = get_field('footer_quick_links','option');
+    $footerLogo = get_field('footer_logo','option');
+    $leftLinks = (isset($quickLinks['links_left']) && $quickLinks['links_left']) ? $quickLinks['links_left'] : '';
+    $rightLinks = (isset($quickLinks['links_right']) && $quickLinks['links_right']) ? $quickLinks['links_right'] : '';
     ?>
-    <?php if ($is_contact_us==false) { ?>
-    <div class="footerTop">
+    <div class="top">
       <div class="wrapper">
-        <div class="footer-columns">
-          <?php if ($contact_details) { ?>
-          <div class="footcol foot-contact-info">
-            <div class="foot-title">Contact</div>
-            <div class="foot-info">
-              <?php foreach ($contact_details as $cd) { 
-                $label = $cd['label'];
-                $description = $cd['description'];
-                $icon = $cd['icon'];
-                if($description) { ?>
-                <div class="info">
-                  <?php if ($icon) { ?><?php echo $icon ?><?php } ?>
-                  <?php if ($description) { ?>
-                  <div class="text"><?php echo $description ?></div>
-                  <?php } ?>
-                </div>
-                <?php } ?>
+        <div class="flexwrap">
+          <?php if ($leftLinks) { ?>
+          <div class="footCol leftLinks">
+            <ul class="footerNav">
+              <?php foreach ($leftLinks as $link) { 
+                $a = $link['link'];
+                $aName = (isset($a['title']) && $a['title']) ? $a['title'] : '';
+                $aUrl = (isset($a['url']) && $a['url']) ? $a['url'] : '';
+                $aTarget = (isset($a['target']) && $a['target']) ? $a['target'] : '_self';
+                ?>
+                <li><a href="<?php echo $aUrl ?>" target="<?php echo $aTarget ?>"><?php echo $aName ?></a></li>  
               <?php } ?>
-            </div>
-
-            <?php if ($social_icons) { ?>
-            <div class="social-media-links">
-              <div class="social-title">Follow</div>
-              <div class="social-links">
-              <?php foreach ($social_icons as $sm) { ?>
-              <a href="<?php echo $sm['url'] ?>" target="<?php echo $sm['target'] ?>">
-                <i class="<?php echo $sm['icon'] ?>"></i>
-                <span class="sr-only"><?php echo $sm['title'] ?></span>
-              </a>
-              <?php } ?>
-              </div>
-            </div>    
-            <?php } ?>
-        
+            </ul>
           </div>
           <?php } ?>
 
-          <?php if ($map_embed ) { ?>
-          <div class="footcol foot-contact-map">
-            <div class="mapframe">
-              <?php echo $map_embed ?>
-            </div>
+          <?php if ($footerLogo) { ?>
+          <figure class="footCol footLogo">
+            <img src="<?php echo $footerLogo['url'] ?>" alt="<?php echo $footerLogo['title'] ?>" />
+          </figure>
+          <?php } ?>
+
+          <?php if ($rightLinks) { ?>
+          <div class="footCol rightLinks">
+            <ul class="footerNav">
+              <?php foreach ($rightLinks as $link) { 
+                $a = $link['link'];
+                $aName = (isset($a['title']) && $a['title']) ? $a['title'] : '';
+                $aUrl = (isset($a['url']) && $a['url']) ? $a['url'] : '';
+                $aTarget = (isset($a['target']) && $a['target']) ? $a['target'] : '_self';
+                ?>
+                <li><a href="<?php echo $aUrl ?>" target="<?php echo $aTarget ?>"><?php echo $aName ?></a></li>  
+              <?php } ?>
+            </ul>
           </div>
           <?php } ?>
         </div>
       </div>
     </div>
-    <?php } ?>
-
-    <?php 
-      $copyright = get_field('copyright', 'option'); 
-      $footerLogos = get_field('footer_logos', 'option'); 
-    ?>
-    <div class="copyright-section<?php echo ($footerLogos) ? ' has-footer-logos':'' ?>">
+    <?php  
+    $social_media = get_social_icons();
+    if($social_media) { ?>
+    <div class="bottom">
       <div class="wrapper">
-        <div class="flexwrap">
-          <?php if ($copyright) { ?>
-          <div class="copyright">
-              <?php echo $copyright ?>
-            <div class="poweredby">Site by <a href="https://bellaworksweb.com/" target="_blank">Bellaworks</a></div>      
-          </div>
-          <?php } ?>
-          <?php if ($footerLogos) { ?>
-          <div class="footer-logo">
-            <?php foreach ($footerLogos as $f) { 
-            $img = $f['image'];
-            $website = $f['logo_website_url'];
-            $newTab = $f['logo_url_open_new_tab'];
-            $linkTarget = ($newTab) ? ' target="_blank" ':'';
-            if($img) { ?>
-            <figure>
-              <?php if ($website) { ?>
-                <a href="<?php echo $website ?>"<?php echo $linkTarget ?>><img src="<?php echo $img['url'] ?>" alt="<?php echo $img['title'] ?>" /></a>
-              <?php } else { ?>
-                <img src="<?php echo $img['url'] ?>" alt="<?php echo $img['title'] ?>" />
-              <?php } ?>
-            </figure>
-            <?php } ?>
-            <?php } ?>
-          </div>
-          <?php } ?>
-        </div>
+        <ul class="social-media">
+        <?php foreach ($social_media as $v) { 
+          $target = ($v['target'] && $v['target']) ? ' target="'.$v['target'].'"':'';
+          $icon = $v['icon'];
+          $link = $v['url'];
+          $title = $v['title'];
+          ?>
+          <li>
+            <a href="<?php echo $link ?>"<?php echo $target ?> aria-label="<?php echo $title ?>"><i class="<?php echo $icon ?>" aria-hidden="true"></i></a>
+          </li>
+        <?php } ?>
+        </ul>
       </div>
+    </div>
+    <?php } ?>
+    <div class="copyright">
+      <span>
+        &copy; <?php echo get_bloginfo('name') ?> <?php echo date('Y') ?>
+      </span>
     </div>
 	</footer><!-- #colophon -->
 	
