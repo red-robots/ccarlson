@@ -13,13 +13,13 @@ jQuery(document).ready(function ($) {
     itemSelector: '.grid-item',
   });
 
-  if( $('.main-navigation ul.sub-menu').length ) {
-    $('.main-navigation ul.sub-menu').each(function(){
-      var submenu = $(this);
-      $('<button class="submenu-toggle" aria-label="Sub-Menu"><i class="fa-solid fa-chevron-down"></i></button>').insertBefore(submenu);
-      submenu.wrap('<div class="submenu-wrapper" />');
-    });
-  }
+  // if( $('.main-navigation ul.sub-menu').length ) {
+  //   $('.main-navigation ul.sub-menu').each(function(){
+  //     var submenu = $(this);
+  //     $('<button class="submenu-toggle" aria-label="Sub-Menu"><i class="fa-solid fa-chevron-down"></i></button>').insertBefore(submenu);
+  //     submenu.wrap('<div class="submenu-wrapper" />');
+  //   });
+  // }
 
   $(document).on('click','.mobileNavContent .submenu-toggle', function(e){
     e.preventDefault();
