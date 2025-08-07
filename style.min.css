@@ -1640,7 +1640,7 @@ a,input,button,textarea,select{-webkit-transition:all ease .3s;transition:all ea
 .repeatable_image_and_text_block .flexwrap .custom-button-element{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:1rem}
 .flexColumns{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-left:-20px;margin-right:-20px}
 .flexColumns .flexCol{width:100%;padding:20px}
-.flexColumns .flexCol a.imageLink{display:block;text-decoration:none;text-align:center}
+.flexColumns .flexCol a.imageLink{display:block;text-decoration:none !important;text-align:center}
 .flexColumns .flexCol a.imageLink figure{margin:0;position:relative}
 .flexColumns .flexCol a.imageLink figure div.image{padding-bottom:130%;position:relative}
 .flexColumns .flexCol a.imageLink figure div.image:after{content:"";display:block;width:100%;height:100%;position:absolute;top:0;left:0;border:0 solid transparent;z-index:10;opacity:0;-webkit-transition:border ease-in-out .3s,opacity ease .5s;transition:border ease-in-out .3s,opacity ease .5s}
@@ -1710,7 +1710,7 @@ body.page-template-page-portfolio .fancybox-container .fancybox-inner .fancybox-
 .gallery-list .flexwrap .fbox{padding:30px}
 .gallery-list .flexwrap .fbox figure{margin:0;-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-name:fadeIn;animation-name:fadeIn}
 .gallery-list .flexwrap .fbox figure img{width:100%;height:auto}
-.gallery-list .flexwrap .fbox a.imageLink{display:block;text-decoration:none;-webkit-transition:all ease .3s;transition:all ease .3s}
+.gallery-list .flexwrap .fbox a.imageLink{display:block;text-decoration:none !important;-webkit-transition:all ease .3s;transition:all ease .3s}
 .gallery-list .flexwrap .fbox a.imageLink img{-webkit-transition:all ease .3s;transition:all ease .3s}
 .gallery-list .flexwrap .fbox a.imageLink:hover{-webkit-transform:translateY(-5px);transform:translateY(-5px)}
 .gallery-list .flexwrap .fbox a.imageLink:hover img{-webkit-box-shadow:0 3px 15px rgba(0,0,0,.15);box-shadow:0 3px 15px rgba(0,0,0,.15)}

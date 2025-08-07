@@ -538,7 +538,7 @@ a,input,button,textarea,select {
     }
     a.imageLink {
       display: block;
-      text-decoration: none;
+      text-decoration: none!important;
       text-align: center;
       figure {
         margin: 0 0;
@@ -1185,7 +1185,7 @@ body.page-template-page-portfolio {
       }
       a.imageLink {
         display: block;
-        text-decoration: none;
+        text-decoration: none!important;
         transition: all ease .3s;
         img {
           transition: all ease .3s;
