@@ -47,7 +47,8 @@ $portfolio_categories = get_terms($tax_args);
           $termId = $term->term_id;
           $termName = $term->name;
           $termImage = get_field('category_image', $taxonomy . '_' . $termId); 
-          $termLink = get_term_link($term,$taxonomy);
+          //$termLink = get_term_link($term,$taxonomy);
+          $termLink = get_site_url() . '/portfolio/?category='.$term->slug;
           $delay = 300 + ($i*50);
           if($termImage) { ?>
           <div class="flexCol">

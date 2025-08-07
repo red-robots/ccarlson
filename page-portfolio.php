@@ -4,6 +4,7 @@
  */
 
 get_header(); 
+$filter_category = ( isset($_GET['category']) && $_GET['category'] ) ? $_GET['category'] : '';
 $perpage = 6;
 $paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 $currentPageLink = get_permalink();
@@ -15,18 +16,18 @@ $tax_args = array(
   'hide_empty' => false, 
 );
 $categories = get_terms($tax_args);
-$current_catid = ( isset($_GET['catid']) && $_GET['catid'] ) ? $_GET['catid'] : '';
 ?>
 
 <?php if ($categories) { ?>
 <div class="category-container">
   <div class="flexwrap">
-    <a href="<?php echo get_permalink() ?>" class="link all<?php echo (empty($current_catid)) ? ' current':''; ?>">All</a>
+    <a href="<?php echo get_permalink() ?>" class="link all<?php echo (empty($filter_category)) ? ' current':''; ?>">All</a>
     <?php foreach ($categories as $term) { 
       $termId = $term->term_id;
+      $termSlug = $term->slug;
       $termName = $term->name;
-      $pagelink = get_permalink() . '?catid=' . $termId;
-      $is_current = ($current_catid==$termId) ? ' current':'';
+      $pagelink = get_permalink() . '?category=' . $termSlug;
+      $is_current = ($filter_category==$termSlug) ? ' current':'';
     ?>
     <a href="<?php echo $pagelink ?>" data-catid="<?php echo $termId ?>" class="link<?php echo $is_current ?>"><?php echo $termName ?></a>  
     <?php } ?>
@@ -52,29 +53,58 @@ $current_catid = ( isset($_GET['catid']) && $_GET['catid'] ) ? $_GET['catid'] : 
         'post_status'      => 'publish'
       );
 
+      if($filter_category) {
+        $args['tax_query'] = array(
+          array(
+            'taxonomy' => $taxonomy,
+            'terms' => $filter_category,
+            'field' => 'slug',
+            'include_children' => true,
+            'operator' => 'IN'
+          )
+        );
+      }
+
       $entries = new WP_Query($args);
       if ( $entries->have_posts() ) { ?>
       <section id="entries" class="gallery-list">
         <div class="wrapper grid-items-wrapper">
           <div class="flexwrap masonry grid">
             <?php while ( $entries->have_posts() ) : $entries->the_post(); 
+              $product_title = get_the_title();
               $main_photo = get_field('main_photo');
               $painting_size = get_field('painting_size');
               $price = get_field('price');
+              $popup_caption = '<span>'.strtoupper($product_title).'</span>';
+              if($painting_size) {
+                $popup_caption .= '<span>'.$painting_size.'</span>';
+              }
+              if($price) {
+                $popup_caption .= '<span>'.$price.'</span>';
+              }
+              // $caption_args = array(strtoupper($product_title),$size,$price);
+              // if( $caption_args = array_filter($caption_args) ) {
+              //   $popup_caption = implode('  ', $caption_args);
+              // }
+
+              $popup_caption = ($popup_caption) ? " data-caption='".$popup_caption."'" : "";
+
               if($main_photo) { ?>
               <div class="grid-sizer"></div>
               <div class="fbox grid-item">
                 <figure class="the-image">
-                  <img src="<?php echo $main_photo['url'] ?>" alt="<?php echo $main_photo['title'] ?>" />
-                  <figcaption>
-                    <div class="title"><?php echo get_the_title() ?></div>
-                    <?php if ($painting_size) { ?>
-                    <div class="size"><?php echo $painting_size ?></div>
-                    <?php } ?>
-                    <?php if ($price) { ?>
-                    <div class="price"><?php echo $price ?></div>
-                    <?php } ?>
-                  </figcaption>
+                  <a href="<?php echo $main_photo['url'] ?>" class="imageLink popup-gallery" data-fancybox="gallery"<?php echo $popup_caption ?>>
+                    <img src="<?php echo $main_photo['url'] ?>" alt="<?php echo $main_photo['title'] ?>" />
+                    <figcaption>
+                      <div class="title"><?php echo $product_title ?></div>
+                      <?php if ($painting_size) { ?>
+                      <div class="size"><?php echo $painting_size ?></div>
+                      <?php } ?>
+                      <?php if ($price) { ?>
+                      <div class="price"><?php echo $price ?></div>
+                      <?php } ?>
+                    </figcaption>
+                  </a>
                 </figure>
               </div>
               <?php } ?>

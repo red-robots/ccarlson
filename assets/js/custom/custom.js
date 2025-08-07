@@ -168,17 +168,26 @@ jQuery(document).ready(function ($) {
     });
   }
 
-  $('[data-fancybox]').fancybox({
+  // $('[data-fancybox]').fancybox({
+  //   touch : true,
+  //   hash : false,
+  //   youtube : {
+  //       controls : 0,
+  //       showinfo : 0,
+  //       rel: 0
+  //   },
+  //   vimeo : {
+  //       color : 'ffffff'
+  //   }
+  // });
+
+  $('.popup-gallery').fancybox({
     touch : true,
     hash : false,
-    youtube : {
-        controls : 0,
-        showinfo : 0,
-        rel: 0
-    },
-    vimeo : {
-        color : 'ffffff'
-    }
+    transitionEffect: 'none', // Applies to open/close/next/prev transitions
+    transitionDuration: 0, // Set duration to 0 for immediate changes
+    animationEffect: 'none', // Applies to animation effects like zoom/fade
+    animationDuration: 0 // Set
   });
 
   $('.zoom-image').fancybox({
