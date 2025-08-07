@@ -1,3 +1,17 @@
+.acf-field-true-false[data-type="true_false"] {
+  position: relative; 
+  .acf-label {
+    padding-left: 23px;
+  }
+  .acf-input {
+    display: inline-block;
+    width: auto;
+    position: absolute;
+    top: 14px;
+    left: 16px;
+  }
+}
+
 .acf-field-flexible-content[data-name="flexible_content"] {
   [data-layout="image_and_text_block"] {
     div.acf-fields {
@@ -27,6 +41,26 @@
           width: 74%;
         }
       }
+    }
+    [data-name="image_placement"],
+    [data-name="image_overlap"] {
+      width: 20%!important;
     }    
+    [data-name="textbg"]  {
+      width: 60%!important;
+    }
+    .acf-field-true-false[data-type="true_false"] {
+      .acf-label {
+        top: 26px;
+      }
+      .acf-input {
+        top: 41px;
+        transform: scale(1.2);
+        left: 12px;
+      }
+    }
   }
 }
+
+
+

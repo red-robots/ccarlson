@@ -1,3 +1,17 @@
+.acf-field-true-false[data-type=true_false] {
+  position: relative;
+}
+.acf-field-true-false[data-type=true_false] .acf-label {
+  padding-left: 23px;
+}
+.acf-field-true-false[data-type=true_false] .acf-input {
+  display: inline-block;
+  width: auto;
+  position: absolute;
+  top: 14px;
+  left: 16px;
+}
+
 .acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] div.acf-fields {
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +39,21 @@
 }
 .acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] div.acf-fields div.acf-field.acf-field-wysiwyg {
   width: 74%;
+}
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] [data-name=image_placement],
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] [data-name=image_overlap] {
+  width: 20% !important;
+}
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] [data-name=textbg] {
+  width: 60% !important;
+}
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] .acf-field-true-false[data-type=true_false] .acf-label {
+  top: 26px;
+}
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=image_and_text_block] .acf-field-true-false[data-type=true_false] .acf-input {
+  top: 41px;
+  transform: scale(1.2);
+  left: 12px;
 }
 
 /*# sourceMappingURL=admin.css.map */
