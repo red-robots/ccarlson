@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Birthstone&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: "FTCursive";
+  src: url("fonts/cursive/cursive.eot");
+  src: url("fonts/cursive/cursive.eot?#iefix") format("embedded-opentype"), url("fonts/cursive/cursive.woff") format("woff"), url("fonts/cursive/cursive.woff2") format("woff2"), url("fonts/cursive/cursive.ttf") format("truetype"), url("fonts/cursive/cursive.svg#Filmotype Keynote") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 body {
   font-family: "Montserrat", sans-serif;
 }
@@ -61,6 +69,17 @@ body {
 .mce-content-body ul > li {
   margin-top: 10px;
   margin-block: 10px;
+}
+
+h3:has(em) {
+  font-family: "FTCursive", "Birthstone", cursive !important;
+  font-size: 35px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 30px 0 0;
+}
+h3:has(em) em {
+  font-style: normal !important;
 }
 
 /*# sourceMappingURL=editor-style.css.map */

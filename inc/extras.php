@@ -474,7 +474,7 @@ function bella_acf_input_admin_footer() { ?>
 (function($) {
   acf.add_filter('color_picker_args', function( args, $field ){
     // do something to args
-    args.palettes = ['#009C89','#43427A','#A82E71','#191E51','#0064B1']
+    args.palettes = ['#F6F0E7','#c1995c','#DBE7E1']
     return args;
   });
 })(jQuery); 

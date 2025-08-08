@@ -280,4 +280,11 @@ jQuery(document).ready(function ($) {
       }
     });
   }
+
+  $(document).on('click', '.select-category-btn', function (e) {
+    e.preventDefault();
+    var isExpanded = $(this).attr('aria-expanded') === 'true';
+    $(this).attr('aria-expanded', !isExpanded);
+    $(this).next().slideToggle();
+  });
 });

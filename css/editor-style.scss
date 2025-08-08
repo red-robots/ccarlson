@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import '../assets/sass/fonts';
+@import '../assets/sass/variables';
+
 body {
   font-family: "Montserrat", sans-serif;
 }
@@ -58,6 +61,18 @@ body {
 .mce-content-body ul > li {
   margin-top: 10px;
   margin-block: 10px;
+}
+
+
+h3:has(em) {
+  font-family: $font_cursive!important;
+  font-size: 35px;
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 30px 0 0;
+  em {
+    font-style: normal!important;
+  }
 }
 
 

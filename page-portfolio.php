@@ -16,21 +16,51 @@ $tax_args = array(
   'hide_empty' => false, 
 );
 $categories = get_terms($tax_args);
+$is_current_name = 'All';
+if ($categories) {
+  if($filter_category) {
+    foreach ($categories as $tm) { 
+      if($filter_category==$tm->slug) {
+        $is_current_name = $tm->name;
+      }
+    }
+  }
+}
 ?>
 
 <?php if ($categories) { ?>
 <div class="category-container">
-  <div class="flexwrap">
-    <a href="<?php echo get_permalink() ?>" class="link all<?php echo (empty($filter_category)) ? ' current':''; ?>">All</a>
-    <?php foreach ($categories as $term) { 
-      $termId = $term->term_id;
-      $termSlug = $term->slug;
-      $termName = $term->name;
-      $pagelink = get_permalink() . '?category=' . $termSlug;
-      $is_current = ($filter_category==$termSlug) ? ' current':'';
-    ?>
-    <a href="<?php echo $pagelink ?>" data-catid="<?php echo $termId ?>" class="link<?php echo $is_current ?>"><?php echo $termName ?></a>  
-    <?php } ?>
+  <div class="desktop-category-selection">
+    <div class="flexwrap">
+      <a href="<?php echo get_permalink() ?>" class="link all<?php echo (empty($filter_category)) ? ' current':''; ?>">All</a>
+      <?php foreach ($categories as $term) { 
+        $termId = $term->term_id;
+        $termSlug = $term->slug;
+        $termName = $term->name;
+        $pagelink = get_permalink() . '?category=' . $termSlug;
+        $is_current = ($filter_category==$termSlug) ? ' current':'';
+      ?>
+      <a href="<?php echo $pagelink ?>" data-catid="<?php echo $termId ?>" class="link<?php echo $is_current ?>"><?php echo $termName ?></a>  
+      <?php } ?>
+    </div>
+  </div>
+
+  <div class="mobile-category-selections">
+    <div class="selections">
+      <button class="select-category-btn" aria-expanded="false" aria-controls="CategorySelections"><span><?php echo $is_current_name ?></span> <i class="fa-solid fa-chevron-down"></i></button>
+      <ul id="CategorySelections" class="category-selections">
+        <li><a href="<?php echo get_permalink() ?>" class="mobile--link all<?php echo (empty($filter_category)) ? ' current':''; ?>">All</a></li>
+        <?php foreach ($categories as $term) { 
+          $termId = $term->term_id;
+          $termSlug = $term->slug;
+          $termName = $term->name;
+          $pagelink = get_permalink() . '?category=' . $termSlug;
+          $is_current = ($filter_category==$termSlug) ? ' current':'';
+          ?>
+          <li><a href="<?php echo $pagelink ?>" data-catid="<?php echo $termId ?>" class="mobile--link<?php echo $is_current ?>"><?php echo $termName ?></a></li> 
+        <?php } ?>
+      </ul>
+    </div>
   </div>
 </div>
 <?php } ?>
