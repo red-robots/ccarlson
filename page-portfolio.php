@@ -161,10 +161,15 @@ if ($categories) {
 
 <script type="text/javascript">
 jQuery(document).ready(function($){
-  $('.masonry').masonry({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
+  var $container = $('.masonry');
+  $container.imagesLoaded(function() {
+    $container.masonry({
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+    });
   });
+
+  
 
   $(document).on("click","#load-more-btn",function(e){
     e.preventDefault();
