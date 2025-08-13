@@ -1785,6 +1785,8 @@ body.no-hero-image:not(.home) #content main.wrapper h1.page-title{font-weight:40
 .repeatable{padding-top:70px;padding-bottom:70px}
 .repeatable.first-section{padding-top:70px;padding-bottom:70px}
 .repeatable_image_and_text_block[class*=next-]{padding-bottom:30px}
+.repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .textCol{min-height:630px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .textCol .wrap{width:100%}
 .repeatable_two_column_section.two-columns .flexwrap .leftCol,.repeatable_two_column_section.two-columns .flexwrap .rightCol{width:48%}
 .flexColumns{margin-left:-30px;margin-right:-30px;padding-left:0;padding-right:0}
 .flexColumns .flexCol{padding:30px;width:25%}

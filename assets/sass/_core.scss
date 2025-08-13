@@ -643,6 +643,19 @@ a,input,button,textarea,select {
       }
     }
   }
+  .flexwrap:has(.imageCol):has(.textCol) {
+    .textCol {
+      @include tab {
+        min-height: 630px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        .wrap {
+          width: 100%;
+        }
+      }
+    }
+  }
 
   @media screen and (max-width: 960px) {
     &:has(.imageCol):has(.textCol) {
