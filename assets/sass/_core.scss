@@ -5,7 +5,23 @@ body {
   font-family: $font_primary;
   font-size: 16px;
   line-height: 1.4;
-  color: #000;
+  color: $color_text_main;
+}
+p {
+  line-height: 1.5;
+}
+.entry-content a {
+  display: inline-block;
+  color: $color_primary;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  &:hover {
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  &:focus {
+    outline: 1px dotted $color_primary;
+  }
 }
 a,input,button,textarea,select {
   transition: all ease .3s;
@@ -112,7 +128,7 @@ a,input,button,textarea,select {
       padding: 15px 0;
       list-style: none;
       position: absolute;
-      left: 10px;
+      left: 8px;
       width: 240px;
       background: #000;
       display: none;
@@ -1172,19 +1188,21 @@ body:not(.home) {
         display: none;
       }
       .mobile-category-selections {
-        width: 80%;
+        max-width: 580px;
+        width: 100%;
         height: 80px;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         background: $color_secondary;
-        padding: 0 20px;
+        padding: 0 0;
         margin-top: -40px;
         position: relative;
         .selections {
-          max-width: 600px;
+          max-width: 100%;
           width: 100%;
+          height: 100%;
           margin: 0 auto;
           display: flex;
           align-items: center;
@@ -1447,6 +1465,37 @@ body.page-template-page-portfolio {
   }
 }
 
+.news-content {
+  .gallery-list {
+    .title {
+      font-weight: 600;
+      color: $color_primary;
+    }
+    .read-more {
+      display: inline-block;
+      transition: all ease .3s;
+      margin-top: 20px;
+      color: $color_primary;
+      border-bottom: 1px solid $color_primary;
+    }
+    a.articleLink {
+      &:hover {
+        .read-more {
+          color: #000;
+        }
+      }
+    }
+    .no-image a.articleLink {
+      border: 1px solid #CCC;
+      border-radius: 0;
+      padding: 20px 30px 35px;
+      &:hover {
+        border-color: $color_primary;
+      }
+    }
+  }
+}
+
 .load-more-wrap {
   display: flex;
   justify-content: center;
@@ -1456,8 +1505,108 @@ body.page-template-page-portfolio {
   }
 }
 
+#main .entry-content .gallery[class*="gallery-columns-"] {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  figure {
+    max-width: 420px;
+    width: 100%;
+    margin: 15px auto;
+    padding: 15px;
+    div, a {
+      display: block;
+      width: 100%;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  @include tab {
+    figure {
+      width: 33.333%;
+    }
+    &.gallery-columns-2 figure {
+      width: 50;
+    }
+    &.gallery-columns-3 figure {
+      width: 33.333%;
+    }
+    &.gallery-columns-4 figure {
+      width: 25%;
+    }
+    &.gallery-columns-5 figure {
+      width: 20%;
+    }
+    &.gallery-columns-6 figure {
+      width: 16.66666%;
+    }
+  }
+}
 
+body.no-hero-image:not(.home) {
+  .site-header {
+    position: relative;
+    box-shadow: 0 -5px 15px rgba(0,0,0,.25);
+    .site-logo img {
+      filter: none;
+    }
+    .main-navigation ul.menu>li>a {
+      color: #000;
+    }
+  }
+  #content {
+    padding-top: 20px;
+    padding-bottom: 60px;
+    @include tab {
+      padding-top: 60px;
+    }
+    main.wrapper {
+      max-width: 1400px;
+      min-height: 30em;
+      h1.page-title {
+        font-weight: 400;
+        font-size: 35px;
+        line-height: 1.2;
+        margin: 0 0 30px;
+      }
+    }
+  }
+}
 
-
-
+.entry-content-column {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  @include tab {
+    flex-direction: row-reverse;
+  }
+  .featured-image {
+    width: 100%;
+    margin: 30px 0 0;
+    @include tab {
+      width: 45%;
+      margin-top: 0;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  article {
+    width: 100%;
+    @include tab {
+      width: 51%;
+    }
+    p {
+      margin-top: 0;
+    }
+  }
+  &:has(.gallery) {
+    align-items: unset;
+  }
+}
 

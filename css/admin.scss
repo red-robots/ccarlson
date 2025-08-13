@@ -62,5 +62,27 @@
   }
 }
 
-
+body.wp-admin.post-type-post {
+  #post-body-content:has(#postimagediv) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    #titlediv {
+      width: 100%;
+    }
+    .meta-box-sortables:has(#postimagediv) {
+      width: 25%;
+      #set-post-thumbnail {
+        width: 100%;
+        img {
+          width: 100%!important;
+          height: auto!important;
+        }
+      }
+    }
+    #postdivrich {
+      width: 73%;
+    }
+  }
+}
 

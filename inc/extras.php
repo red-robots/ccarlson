@@ -522,3 +522,30 @@ function get_flexible_templates() {
 }
 
 
+function page_title_here_shortcode( $atts ){
+  global $post;
+  $page_title = $post->post_title;
+  $a = shortcode_atts( array(
+    'class' => '',
+  ), $atts );
+  $custom_class = $a['class'];
+  if($custom_class) {
+    return '<h1 class="page-title '.$custom_class.'">'.$page_title.'</h1>';
+  } else {
+    return '<h1 class="page-title">'.$page_title.'</h1>';
+  }
+}
+add_shortcode( 'page_title_here', 'page_title_here_shortcode' );
+
+
+function bw_custom_remove_page_title( $title ) {
+  if ( (is_page() || is_singular()) && !is_admin() ) { 
+    global $post;
+    if( has_shortcode( $post->post_content, 'page_title_here' ) ) {
+      return ''; // Return an empty string to hide the title
+    }
+  }
+  return $title; // Return the original title for other post types or in the admin area
+}
+add_filter( 'the_title', 'bw_custom_remove_page_title' );
+

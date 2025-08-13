@@ -41,7 +41,13 @@ var params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){
 </script>
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<?php 
+$extra_class = array();
+if( is_single() || is_page() ) {
+  $extra_class[] = ( get_field('hero_image') ) ? 'has-hero-image' : 'no-hero-image';
+}
+?>
+<body <?php body_class($extra_class); ?>>
 <div id="page" class="site">
 	<div id="overlay"></div>
 	<a class="skip-link" href="#content"><?php esc_html_e( 'Skip to content', 'bellaworks' ); ?></a>

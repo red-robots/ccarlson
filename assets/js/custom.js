@@ -232,6 +232,14 @@ jQuery(document).ready(function ($) {
   // });
 
 
+  if ($('.entry-content .gallery[class*="gallery-columns-"]').length) {
+    $('.gallery[class*="gallery-columns-"] .gallery-item a').fancybox({
+      touch: true,
+      hash: false,
+      buttons: ['fullScreen', 'close']
+    });
+  }
+
   $('.popup-gallery').fancybox({
     touch: true,
     hash: false,
