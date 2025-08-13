@@ -1527,6 +1527,7 @@ body.page-template-page-portfolio {
   @include tab {
     figure {
       width: 33.333%;
+      margin: 0 0;
     }
     &.gallery-columns-2 figure {
       width: 50;
@@ -1543,6 +1544,12 @@ body.page-template-page-portfolio {
     &.gallery-columns-6 figure {
       width: 16.66666%;
     }
+  }
+}
+
+#main .entry-content:has(.gallery[class*="gallery-columns-"]) {
+  .entry-content-column {
+    margin-bottom: 20px;
   }
 }
 
