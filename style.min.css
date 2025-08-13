@@ -1650,7 +1650,7 @@ a,input,button,textarea,select{-webkit-transition:all ease .3s;transition:all ea
 .repeatable_image_and_text_block .flexwrap p:has(.custom-button-element){margin-top:40px;margin-bottom:0}
 .repeatable_image_and_text_block .flexwrap .custom-button-element{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:1rem}
 .repeatable_image_and_text_block .gform_wrapper{background:transparent !important;padding:0 0 !important}
-.repeatable_image_and_text_block .textCol:has(p):has(.gform_wrapper){margin-top:30px}
+.repeatable_image_and_text_block .textCol:has(p):has(.gform_wrapper) .gform_wrapper{margin-top:30px}
 .repeatable_image_and_text_block.overlap-image{padding-top:80px;padding-bottom:80px}
 .repeatable_image_and_text_block.overlap-image .flexwrap .imageCol{position:relative;left:5px;z-index:20;width:28%}
 .repeatable_image_and_text_block.overlap-image .flexwrap .imageCol figure{position:relative;padding-bottom:100%}

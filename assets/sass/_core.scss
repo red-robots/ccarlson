@@ -559,7 +559,9 @@ a,input,button,textarea,select {
   }
 
   .textCol:has(p):has(.gform_wrapper) {
-    margin-top: 30px;
+    .gform_wrapper {
+      margin-top: 30px;
+    }
   }
 
   @media screen and (max-width: 960px) {
