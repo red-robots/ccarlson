@@ -55,6 +55,14 @@
   transform: scale(1.2);
   left: 12px;
 }
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=two_column_section] .acf-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.acf-field-flexible-content[data-name=flexible_content] [data-layout=two_column_section] .acf-fields div.acf-field {
+  width: 50%;
+}
 
 body.wp-admin.post-type-post #post-body-content:has(#postimagediv) {
   display: flex;

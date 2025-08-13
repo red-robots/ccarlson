@@ -60,6 +60,16 @@
       }
     }
   }
+  [data-layout="two_column_section"] {
+    .acf-fields {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      div.acf-field {
+        width: 50%;
+      }
+    } 
+  }
 }
 
 body.wp-admin.post-type-post {

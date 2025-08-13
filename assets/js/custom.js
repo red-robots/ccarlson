@@ -278,6 +278,8 @@ jQuery(document).ready(function ($) {
           var groupName = $(this).prev().attr('data-group');
           $(this).addClass('prev-' + groupName);
         }
+      } else {
+        $(this).addClass('first-section');
       }
 
       if ($(this).next().hasClass('repeatable')) {
