@@ -77,5 +77,11 @@ body.wp-admin.post-type-post #post-body-content:has(#postimagediv) .meta-box-sor
 body.wp-admin.post-type-post #post-body-content:has(#postimagediv) #postdivrich {
   width: 73%;
 }
+@media screen and (max-width: 1250px) {
+  body.wp-admin.post-type-post #post-body-content:has(#postimagediv) .meta-box-sortables:has(#postimagediv),
+body.wp-admin.post-type-post #post-body-content:has(#postimagediv) #postdivrich {
+    width: 100% !important;
+  }
+}
 
 /*# sourceMappingURL=admin.css.map */
