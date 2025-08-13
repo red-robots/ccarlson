@@ -558,6 +558,10 @@ a,input,button,textarea,select {
     padding: 0 0!important;
   }
 
+  .textCol:has(p):has(.gform_wrapper) {
+    margin-top: 30px;
+  }
+
   @media screen and (max-width: 960px) {
     .flexwrap {
       .imageCol, .textCol {
