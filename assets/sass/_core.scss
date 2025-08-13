@@ -578,10 +578,10 @@ a,input,button,textarea,select {
       position: relative;
       left: 5px;
       z-index: 20;
-      width: 30%;
+      width: 28%;
       figure {
         position: relative;
-        padding-bottom: 105%;
+        padding-bottom: 100%;
         @media screen and (max-width: 1380px) {
           padding-bottom: 130%;
         }
@@ -609,6 +609,7 @@ a,input,button,textarea,select {
       }
     }
     .textCol {
+      width: 60%;
       padding: 70px 70px;
       @media screen and (max-width: 1380px) {
         width: 65%;

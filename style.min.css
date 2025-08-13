@@ -1650,11 +1650,11 @@ a,input,button,textarea,select{-webkit-transition:all ease .3s;transition:all ea
 .repeatable_image_and_text_block .flexwrap p:has(.custom-button-element){margin-top:40px;margin-bottom:0}
 .repeatable_image_and_text_block .flexwrap .custom-button-element{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:1rem}
 .repeatable_image_and_text_block.overlap-image{padding-top:80px;padding-bottom:80px}
-.repeatable_image_and_text_block.overlap-image .flexwrap .imageCol{position:relative;left:5px;z-index:20;width:30%}
-.repeatable_image_and_text_block.overlap-image .flexwrap .imageCol figure{position:relative;padding-bottom:105%}
+.repeatable_image_and_text_block.overlap-image .flexwrap .imageCol{position:relative;left:5px;z-index:20;width:28%}
+.repeatable_image_and_text_block.overlap-image .flexwrap .imageCol figure{position:relative;padding-bottom:100%}
 .repeatable_image_and_text_block.overlap-image .flexwrap .imageCol figure:before{content:"";display:block;width:100%;height:100%;position:absolute;top:-25px;left:-25px;border:2px solid #c1995c;z-index:5}
 .repeatable_image_and_text_block.overlap-image .flexwrap .imageCol figure img{display:block;width:100%;height:100%;position:absolute;top:0;left:0;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center}
-.repeatable_image_and_text_block.overlap-image .flexwrap .textCol{padding:70px 70px}
+.repeatable_image_and_text_block.overlap-image .flexwrap .textCol{width:60%;padding:70px 70px}
 .repeatable_image_and_text_block.overlap-image .flexwrap .textCol:before{display:none}
 .repeatable_image_and_text_block.overlap-image .flexwrap .textCol .padleft{position:absolute;top:0;left:-20%;width:100%;height:100%}
 .repeatable_image_and_text_block.overlap-image .flexwrap .textCol .wrap{position:relative;z-index:10}
