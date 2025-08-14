@@ -186,6 +186,10 @@ jQuery(document).ready(function($){
       $(".load-more-wrap").remove();
     }
     $(".hidden-entries").load(nextURL+" .grid-items-wrapper",function(){
+      if( $('#entries .masonry .appended').length ) {
+        $('#entries .masonry .grid-item ').removeClass('appended');
+      }
+
       if( $('#entries .masonry #firstAppended').length ) {
         $('#entries .masonry #firstAppended').removeAttr('id');
       }
@@ -196,6 +200,7 @@ jQuery(document).ready(function($){
             $(this).attr('id','firstAppended');
           }
           $(this).addClass('appended');
+          $(this).css('opacity','0');
           $(this).appendTo('#entries .masonry');
         });
 
@@ -209,7 +214,12 @@ jQuery(document).ready(function($){
           },100);
           setTimeout(function(){
             smoothScroll('#firstAppended');
-          },100);
+          },500);
+          setTimeout(function(){
+            $('#entries .masonry .appended').each(function(){
+              $(this).css('opacity',1);
+            });
+          },1100);
         }
       }
 
@@ -220,8 +230,8 @@ jQuery(document).ready(function($){
     var target = $(hashTag);
     if (target.length) {
       $('html, body').animate({
-        scrollTop: target.offset().top - 50
-      }, 1500, function() {
+        scrollTop: target.offset().top - 100
+      }, 800, function() {
         target.focus();
         if (target.is(":focus")) {
           return false;

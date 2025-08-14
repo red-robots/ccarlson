@@ -1489,9 +1489,9 @@ body.page-template-page-portfolio {
   }
 }
 
-.masonry .grid-item.appended .the-image {
-  animation-duration: 1.5s;
-  animation-name: fadeIn;
+.masonry .grid-item.appended {
+  opacity: 0;
+  transition: opacity ease .8s;
 }
 
 .gallery-list {
