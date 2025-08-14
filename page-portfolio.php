@@ -161,15 +161,17 @@ if ($categories) {
 
 <script type="text/javascript">
 jQuery(document).ready(function($){
-  var $container = $('.masonry');
-  $container.imagesLoaded(function() {
-    $container.masonry({
-      itemSelector: '.grid-item',
-      columnWidth: '.grid-sizer',
-    });
-  });
+  const $container = $('.masonry');
+  do_masonry();
 
-  
+  function do_masonry() {
+    $container.imagesLoaded(function() {
+      $container.masonry({
+        itemSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+      });
+    });
+  }
 
   $(document).on("click","#load-more-btn",function(e){
     e.preventDefault();
@@ -201,13 +203,10 @@ jQuery(document).ready(function($){
         //$("#loaderDiv").addClass("show");
         
         if(entries) {
-          $('.masonry').masonry('destroy');
+          $container.masonry('destroy');
           setTimeout(function(){
-            $('.masonry').masonry({
-              itemSelector: '.grid-item',
-              columnWidth: '.grid-sizer',
-            });
-          },20);
+            do_masonry()
+          },100);
           setTimeout(function(){
             smoothScroll('#firstAppended');
           },100);

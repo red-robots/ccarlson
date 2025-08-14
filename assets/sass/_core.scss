@@ -1489,6 +1489,11 @@ body.page-template-page-portfolio {
   }
 }
 
+.masonry .grid-item.appended .the-image {
+  animation-duration: 1.5s;
+  animation-name: fadeIn;
+}
+
 .gallery-list {
   padding-bottom: 80px;
   @media screen and (max-width: 768px) {
