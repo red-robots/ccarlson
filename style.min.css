@@ -1642,7 +1642,7 @@ a,input,button,textarea,select{-webkit-transition:all ease .3s;transition:all ea
 .repeatable_image_and_text_block .flexwrap .imageCol{width:50%;position:relative}
 .repeatable_image_and_text_block .flexwrap .imageCol figure{margin:0}
 .repeatable_image_and_text_block .flexwrap .imageCol figure img{width:100%;height:auto}
-.repeatable_image_and_text_block .flexwrap .imageCol figcaption{padding:10px 0;font-size:15px;line-height:1.3}
+.repeatable_image_and_text_block .flexwrap .imageCol figcaption{padding:8px 0;font-size:14px;line-height:1.3}
 .repeatable_image_and_text_block .flexwrap .textCol{width:50%;background:#f6f0e7;color:#000;font-size:18px;padding:50px 100px;padding-left:50px;position:relative;overflow:visible}
 .repeatable_image_and_text_block .flexwrap .textCol:before{content:"";display:block;width:100%;height:100%;position:absolute;top:0;left:0;background:#f6f0e7;-webkit-transform:scale(1.2);transform:scale(1.2)}
 .repeatable_image_and_text_block .flexwrap .textCol .wrap{position:relative;z-index:5}
