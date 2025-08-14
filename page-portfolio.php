@@ -5,7 +5,7 @@
 
 get_header(); 
 $filter_category = ( isset($_GET['category']) && $_GET['category'] ) ? $_GET['category'] : '';
-$perpage = 6;
+$perpage = 15;
 $paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 $currentPageLink = get_permalink();
 $taxonomy = 'artwork-category';
