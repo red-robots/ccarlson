@@ -1655,6 +1655,7 @@ body:not(.home) {
   }
 }
 
+body.error404,
 body.no-hero-image:not(.home) {
   .site-header {
     position: relative;
@@ -1667,7 +1668,7 @@ body.no-hero-image:not(.home) {
     }
   }
   #content {
-    padding-top: 20px;
+    padding-top: 30px;
     padding-bottom: 60px;
     @include tab {
       padding-top: 60px;
@@ -1679,6 +1680,53 @@ body.no-hero-image:not(.home) {
         font-size: 35px;
         line-height: 1.2;
         margin: 0 0 30px;
+      }
+    }
+  }
+}
+
+body.error404 {
+  padding-top: 50px;
+  #main {
+    max-width:900px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    h1 {
+      text-transform: uppercase;
+      font-weight: 400;
+      margin: 0 0;
+    }
+    #sitemap {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      ul {
+        margin: 0 0;
+        padding: 0 0;
+        list-style: none;
+        column-count: 3;
+        text-align: left;
+        @media screen and (max-width: 850px) {
+          column-count: 2;
+        }
+        @media screen and (max-width: 500px) {
+          column-count: 1;
+        }
+        li {
+          display: block;
+          break-inside: avoid-column;
+          min-width: 200px;
+          padding: 5px 0;
+          a {
+            &:hover {
+              color: black;
+            }
+          }
+          @media screen and (max-width: 500px) {
+            text-align: center;
+          }
+        }
       }
     }
   }
