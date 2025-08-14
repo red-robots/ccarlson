@@ -1222,7 +1222,7 @@ body:not(.home) {
     position: relative;
     display: flex;
     justify-content: center;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     z-index: 100;
     .flexwrap {
       display: flex;
@@ -1560,7 +1560,14 @@ body.page-template-page-portfolio {
     }
   }
 }
-
+body.page-template-page-news {
+  #main {
+    padding-top: 40px;
+  }
+  &:has(.category-container) #main {
+    padding-top: 0;
+  }
+}
 .news-content {
   .gallery-list {
     .title {

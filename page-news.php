@@ -26,8 +26,8 @@ if ($categories) {
     }
   }
 }
+$categories = false;
 ?>
-
 <?php if ($categories) { ?>
 <div class="category-container">
   <div class="desktop-category-selection">
