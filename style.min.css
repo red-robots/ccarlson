@@ -1642,6 +1642,7 @@ a,input,button,textarea,select{-webkit-transition:all ease .3s;transition:all ea
 .repeatable_image_and_text_block .flexwrap .imageCol{width:50%;position:relative}
 .repeatable_image_and_text_block .flexwrap .imageCol figure{margin:0}
 .repeatable_image_and_text_block .flexwrap .imageCol figure img{width:100%;height:auto}
+.repeatable_image_and_text_block .flexwrap .imageCol figcaption{padding:10px 0;font-size:15px;line-height:1.3}
 .repeatable_image_and_text_block .flexwrap .textCol{width:50%;background:#f6f0e7;color:#000;font-size:18px;padding:50px 100px;padding-left:50px;position:relative;overflow:visible}
 .repeatable_image_and_text_block .flexwrap .textCol:before{content:"";display:block;width:100%;height:100%;position:absolute;top:0;left:0;background:#f6f0e7;-webkit-transform:scale(1.2);transform:scale(1.2)}
 .repeatable_image_and_text_block .flexwrap .textCol .wrap{position:relative;z-index:5}
@@ -1823,8 +1824,8 @@ body.error404 #content,body.no-hero-image:not(.home) #content{padding-top:60px}
 .repeatable_image_and_text_block.overlap-image:has(.imageCol):has(.textCol){padding-top:20px}
 .repeatable_image_and_text_block.overlap-image .flexwrap .textCol{width:100%;padding:30px}
 .repeatable_image_and_text_block.overlap-image .flexwrap .textCol .padleft{display:none}
-.repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .textCol{padding-top:120px}
-.repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .imageCol{max-width:280px;width:100%;top:80px}
+.repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .textCol{padding-top:130px}
+.repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .imageCol{max-width:280px;width:100%;top:110px}
 .repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .imageCol figure{padding-bottom:110%}
 .repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .imageCol figure:before{top:-20px;left:-20px}
 .site-footer{padding-top:20px}

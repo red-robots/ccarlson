@@ -18,6 +18,11 @@
           <figure>
             <img src="<?php echo $feat_image['url'] ?>" alt="<?php echo $feat_image['title'] ?>" />
           </figure>
+          <?php if ($feat_image['caption']) { ?>
+          <figcaption>
+            <div class="caption"><?php echo $feat_image['caption'] ?></div>
+          </figcaption>
+          <?php } ?>
         </div> 
         <?php } ?>
         <?php if ($text) { ?>

@@ -506,6 +506,11 @@ a,input,button,textarea,select {
           height: auto;
         }
       }
+      figcaption {
+        padding: 10px 0;
+        font-size: 15px;
+        line-height: 1.3;
+      }
     }
     .textCol {
       width: 50%;
@@ -682,12 +687,12 @@ a,input,button,textarea,select {
       }
       &:has(.imageCol):has(.textCol) {
         .textCol {
-          padding-top: 120px;
+          padding-top: 130px;
         }
         .imageCol {
           max-width: 280px;
           width: 100%;
-          top: 80px;
+          top: 110px;
           figure {
             padding-bottom: 110%;
           }
