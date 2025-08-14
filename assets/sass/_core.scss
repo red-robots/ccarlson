@@ -274,7 +274,7 @@ a,input,button,textarea,select {
     padding-bottom: 0;
   }
 
-  &.first-section {
+  &.first-section:not(.repeatable_hero) {
     padding-top: 40px;
     padding-bottom: 40px;
     @include tab {

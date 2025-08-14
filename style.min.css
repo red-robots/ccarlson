@@ -1607,7 +1607,7 @@ a,input,button,textarea,select{-webkit-transition:all ease .3s;transition:all ea
 .button:hover:after,.button:focus:after{width:100%}
 .repeatable{padding-top:40px;padding-bottom:40px}
 .repeatable:first-child{padding-top:0;padding-bottom:0}
-.repeatable.first-section{padding-top:40px;padding-bottom:40px}
+.repeatable.first-section:not(.repeatable_hero){padding-top:40px;padding-bottom:40px}
 .repeatable .buttons{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;gap:1rem}
 .repeatable_hero{position:relative;overflow:hidden}
 .repeatable_hero figure,.repeatable_hero figcaption{margin:0}
@@ -1792,7 +1792,7 @@ body.error404 #main #sitemap ul li a:hover{color:#000}
 .site-header{padding-left:70px;padding-right:70px}
 .wrapper{padding-left:70px;padding-right:70px}
 .repeatable{padding-top:70px;padding-bottom:70px}
-.repeatable.first-section{padding-top:70px;padding-bottom:70px}
+.repeatable.first-section:not(.repeatable_hero){padding-top:70px;padding-bottom:70px}
 .repeatable_image_and_text_block[class*=next-]{padding-bottom:30px}
 .repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .textCol{min-height:630px;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .repeatable_image_and_text_block.overlap-image .flexwrap:has(.imageCol):has(.textCol) .textCol .wrap{width:100%}
