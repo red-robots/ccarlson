@@ -105,8 +105,10 @@ if ($categories) {
         <div class="wrapper grid-items-wrapper">
           <div class="flexwrap masonry grid">
             <?php while ( $entries->have_posts() ) : $entries->the_post(); 
+              $postId = get_the_ID();
               $product_title = get_the_title();
               $main_photo = get_field('main_photo');
+              $gallery = get_field('gallery');
               $painting_size = get_field('painting_size');
               $price = get_field('price');
               $popup_caption = '<span>'.strtoupper($product_title).'</span>';
@@ -121,14 +123,14 @@ if ($categories) {
               //   $popup_caption = implode('  ', $caption_args);
               // }
 
-              $popup_caption = ($popup_caption) ? " data-caption='".$popup_caption."'" : "";
+              $popup_caption = ($popup_caption) ? " data-caption='".$popup_caption."' " : "";
               $is_appended = ($paged>1) ? ' is-appended':'';
-
+              $has_gallery = ($gallery) ? ' data-fancybox="gallery-'.$postId.'" ' : '';
               if($main_photo) { ?>
               <div class="grid-sizer"></div>
               <div class="fbox grid-item<?php echo $is_appended ?>">
                 <figure class="the-image">
-                  <a href="<?php echo $main_photo['url'] ?>" class="imageLink popup-gallery" data-fancybox="gallery"<?php echo $popup_caption ?>>
+                  <a href="<?php echo $main_photo['url'] ?>" class="imageLink popup-gallery"<?php echo $popup_caption ?><?php echo $has_gallery ?>>
                     <img src="<?php echo $main_photo['url'] ?>" alt="<?php echo $main_photo['title'] ?>" class="lazyload" />
                     <figcaption>
                       <div class="title"><?php echo $product_title ?></div>
@@ -141,6 +143,15 @@ if ($categories) {
                     </figcaption>
                   </a>
                 </figure>
+                <?php if ($gallery) { ?>
+                <div class="gallery-hidden" style="display:none">
+                  <?php foreach ($gallery as $img) { ?>
+                    <a href="<?php echo $img['url'] ?>" class="popup-gallery" role="presentation"<?php echo $has_gallery ?><?php echo $popup_caption ?>>
+                      <span class="sr-only">Image Gallery Item</span>
+                    </a>
+                  <?php } ?>
+                </div>  
+                <?php } ?>
               </div>
               <?php } ?>
             <?php endwhile; wp_reset_postdata(); ?>

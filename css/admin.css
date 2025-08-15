@@ -64,6 +64,30 @@
   width: 50%;
 }
 
+@media screen and (min-width: 1280px) {
+  body.wp-admin.post-type-portfolio #post-body-content:has([data-name=main_photo]):has([data-name=gallery]) .inside.acf-fields {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  body.wp-admin.post-type-portfolio #post-body-content:has([data-name=main_photo]):has([data-name=gallery]) .inside.acf-fields .acf-field {
+    width: 100%;
+  }
+  body.wp-admin.post-type-portfolio #post-body-content:has([data-name=main_photo]):has([data-name=gallery]) .inside.acf-fields .acf-field[data-name=main_photo] {
+    width: 30%;
+  }
+  body.wp-admin.post-type-portfolio #post-body-content:has([data-name=main_photo]):has([data-name=gallery]) .inside.acf-fields .acf-field[data-name=main_photo] .acf-image-uploader .image-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  body.wp-admin.post-type-portfolio #post-body-content:has([data-name=main_photo]):has([data-name=gallery]) .inside.acf-fields .acf-field[data-name=main_photo] .acf-image-uploader .image-wrap img {
+    width: 100% !important;
+    height: auto !important;
+  }
+  body.wp-admin.post-type-portfolio #post-body-content:has([data-name=main_photo]):has([data-name=gallery]) .inside.acf-fields .acf-field[data-name=gallery] {
+    width: 70%;
+  }
+}
+
 body.wp-admin.post-type-post #post-body-content:has(#postimagediv) {
   display: flex;
   flex-wrap: wrap;

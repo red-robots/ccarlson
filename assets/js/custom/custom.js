@@ -190,6 +190,7 @@ jQuery(document).ready(function ($) {
   }
 
   $('.popup-gallery').fancybox({
+    buttons : ['fullScreen','close'],
     touch : true,
     hash : false,
     transitionEffect: 'none', // Applies to open/close/next/prev transitions

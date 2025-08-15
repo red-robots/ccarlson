@@ -72,6 +72,36 @@
   }
 }
 
+body.wp-admin.post-type-portfolio {
+  #post-body-content:has([data-name="main_photo"]):has([data-name="gallery"]) {
+    @media screen and (min-width: 1280px) {
+      .inside.acf-fields {
+        display: flex;
+        flex-wrap: wrap;
+        .acf-field {
+          width: 100%;
+        }
+        .acf-field[data-name="main_photo"] {
+          width: 30%;
+          .acf-image-uploader {
+            .image-wrap {
+              max-width: 100%!important;
+              width: 100%!important;
+              img {
+                width: 100%!important;
+                height: auto!important;
+              }
+            }
+          }
+        }
+        .acf-field[data-name="gallery"] {
+          width: 70%;
+        }
+      }
+    }
+  }
+}
+
 body.wp-admin.post-type-post {
   #post-body-content:has(#postimagediv) {
     display: flex;
