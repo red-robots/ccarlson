@@ -5,7 +5,7 @@
 
 get_header(); 
 $filter_category = ( isset($_GET['category']) && $_GET['category'] ) ? $_GET['category'] : '';
-$perpage = 9;
+$perpage = 15;
 $paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 $currentPageLink = get_permalink();
 if($filter_category) {
@@ -211,7 +211,6 @@ jQuery(document).ready(function($){
     $.get(nextURL, function( content ) {
       var newItems = $(content).find('.grid-item');
       if(newItems.length) {
-
         $masonry.append(newItems);
         $masonry.masonry( 'appended', newItems );
         $masonry.imagesLoaded(function() {
@@ -220,12 +219,6 @@ jQuery(document).ready(function($){
             do_fancy_popup();
           }, 400);
         });
-
-        // setTimeout(function(){
-        //   $masonry.imagesLoaded(function() {
-        //     $masonry.masonry('layout');
-        //   });
-        // }, 600);
       }
     });
 

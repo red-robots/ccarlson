@@ -5,9 +5,13 @@
 
 get_header(); 
 $filter_category = ( isset($_GET['category']) && $_GET['category'] ) ? $_GET['category'] : '';
-$perpage = 6;
+$perpage = 15;
 $paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 $currentPageLink = get_permalink();
+if($filter_category) {
+  $currentPageLink = get_permalink() . '?category=' . $filter_category;
+}
+
 $taxonomy = 'category';
 $post_type = 'post';
 $tax_args = array(
@@ -148,15 +152,19 @@ $categories = false;
 
 <script type="text/javascript">
 jQuery(document).ready(function($){
-  var $container = $('.masonry');
-  $container.imagesLoaded(function() {
-    $container.masonry({
+
+  const $masonry = $('.masonry');
+  $masonry.imagesLoaded(function() {
+    $masonry.masonry({
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
+      percentPosition: true,
+      stagger: 20,
+      visibleStyle: { opacity: 1 },
+      hiddenStyle: { opacity: 0 },  
     });
   });
 
-  
 
   $(document).on("click","#load-more-btn",function(e){
     e.preventDefault();
@@ -166,42 +174,28 @@ jQuery(document).ready(function($){
     var nextPageNum = parseInt(currentPageNum) + 1;
     var pageEnd = $(this).attr("data-end");
     var nextURL = baseURL + '?pg=' + nextPageNum;
+    if(baseURL.indexOf('?')!==-1) {
+      nextURL = baseURL + '&pg=' + nextPageNum;
+    }
+
     button.attr("data-current",nextPageNum);
     if(nextPageNum==pageEnd) {
       $(".load-more-wrap").remove();
     }
-    $(".hidden-entries").load(nextURL+" .grid-items-wrapper",function(){
-      if( $('#entries .masonry #firstAppended').length ) {
-        $('#entries .masonry #firstAppended').removeAttr('id');
-      }
 
-      if( $(".hidden-entries").find(".fbox").length>0 ) {
-        $(".hidden-entries").find(".fbox").each(function(k){
-          if(k==0) {
-            $(this).attr('id','firstAppended');
-          }
-          $(this).addClass('appended');
-          $(this).appendTo('#entries .masonry');
+    $.get(nextURL, function( content ) {
+      var newItems = $(content).find('.grid-item');
+      if(newItems.length) {
+        $masonry.append(newItems);
+        $masonry.masonry( 'appended', newItems );
+        $masonry.imagesLoaded(function() {
+          setTimeout(function(){
+            $masonry.masonry('layout');
+          }, 400);
         });
-
-        //var entries = $(".hidden-entries").find(".masonry").html();
-        //$("#loaderDiv").addClass("show");
-        
-        if(entries) {
-          $('.masonry').masonry('destroy');
-          setTimeout(function(){
-            $('.masonry').masonry({
-              itemSelector: '.grid-item',
-              columnWidth: '.grid-sizer',
-            });
-          },20);
-          setTimeout(function(){
-            smoothScroll('#firstAppended');
-          },100);
-        }
       }
-
     });
+
   });
 
   function smoothScroll(hashTag) {
