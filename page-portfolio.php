@@ -5,9 +5,13 @@
 
 get_header(); 
 $filter_category = ( isset($_GET['category']) && $_GET['category'] ) ? $_GET['category'] : '';
-$perpage = 15;
+$perpage = 9;
 $paged = ( get_query_var( 'pg' ) ) ? absint( get_query_var( 'pg' ) ) : 1;
 $currentPageLink = get_permalink();
+if($filter_category) {
+  $currentPageLink = get_permalink() . '?category=' . $filter_category;
+}
+
 $taxonomy = 'artwork-category';
 $post_type = 'portfolio';
 $tax_args = array(
@@ -118,10 +122,11 @@ if ($categories) {
               // }
 
               $popup_caption = ($popup_caption) ? " data-caption='".$popup_caption."'" : "";
+              $is_appended = ($paged>1) ? ' is-appended':'';
 
               if($main_photo) { ?>
               <div class="grid-sizer"></div>
-              <div class="fbox grid-item">
+              <div class="fbox grid-item<?php echo $is_appended ?>">
                 <figure class="the-image">
                   <a href="<?php echo $main_photo['url'] ?>" class="imageLink popup-gallery" data-fancybox="gallery"<?php echo $popup_caption ?>>
                     <img src="<?php echo $main_photo['url'] ?>" alt="<?php echo $main_photo['title'] ?>" />
@@ -146,9 +151,10 @@ if ($categories) {
 
         <?php
           $total_pages = $entries->max_num_pages;
+          $found = $entries->found_posts;
           if ($total_pages > 1){ ?> 
           <div class="load-more-wrap">
-            <button id="load-more-btn" data-current="1" data-baseurl="<?php echo $currentPageLink ?>" data-end="<?php echo $total_pages?>" class="button"><span>Load More</span></button>
+            <button id="load-more-btn" data-found="<?php echo $found ?>" data-current="1" data-baseurl="<?php echo $currentPageLink ?>" data-end="<?php echo $total_pages?>" class="button"><span>Load More</span></button>
           </div>
           <?php } ?>
         <?php } ?>
@@ -181,50 +187,78 @@ jQuery(document).ready(function($){
     var nextPageNum = parseInt(currentPageNum) + 1;
     var pageEnd = $(this).attr("data-end");
     var nextURL = baseURL + '?pg=' + nextPageNum;
+    if(baseURL.indexOf('?')!==-1) {
+      nextURL = baseURL + '&pg=' + nextPageNum;
+    }
+
     button.attr("data-current",nextPageNum);
     if(nextPageNum==pageEnd) {
       $(".load-more-wrap").remove();
     }
-    $(".hidden-entries").load(nextURL+" .grid-items-wrapper",function(){
-      if( $('#entries .masonry .appended').length ) {
-        $('#entries .masonry .grid-item ').removeClass('appended');
-      }
 
-      if( $('#entries .masonry #firstAppended').length ) {
-        $('#entries .masonry #firstAppended').removeAttr('id');
-      }
+    $.get(nextURL, function( content ) {
+      var newItems = $(content).find('.grid-item');
+      if(newItems.length) {
+        //$container.append(newItems).masonry( 'appended', newItems ).masonry('layout');
 
-      if( $(".hidden-entries").find(".fbox").length>0 ) {
-        $(".hidden-entries").find(".fbox").each(function(k){
-          if(k==0) {
-            $(this).attr('id','firstAppended');
-          }
-          $(this).addClass('appended');
-          $(this).css('opacity','0');
-          $(this).appendTo('#entries .masonry');
+        $container.imagesLoaded(function() {
+          $container.append(newItems);
+          $container.masonry( 'appended', newItems );
+          setTimeout(function(){
+            $container.masonry('layout');
+            $container.find('.is-appended').addClass('is-visible');
+          }, 100);
+          
         });
-
-        //var entries = $(".hidden-entries").find(".masonry").html();
-        //$("#loaderDiv").addClass("show");
-        
-        if(entries) {
-          $container.masonry('destroy');
-          setTimeout(function(){
-            do_masonry()
-          },100);
-          setTimeout(function(){
-            smoothScroll('#firstAppended');
-          },500);
-          setTimeout(function(){
-            $('#entries .masonry .appended').each(function(){
-              $(this).css('opacity',1);
-            });
-          },1100);
-        }
       }
-
     });
+
+    // $(".hidden-entries").load(nextURL+" .grid-items-wrapper",function(){
+    //   if( $('#entries .masonry .appended').length ) {
+    //     $('#entries .masonry .grid-item ').removeClass('appended');
+    //   }
+
+    //   if( $('#entries .masonry #firstAppended').length ) {
+    //     $('#entries .masonry #firstAppended').removeAttr('id');
+    //   }
+
+    //   if( $(".hidden-entries").find(".fbox").length>0 ) {
+    //     // $(".hidden-entries").find(".fbox").each(function(k){
+    //     //   if(k==0) {
+    //     //     $(this).attr('id','firstAppended');
+    //     //   }
+    //     //   $(this).addClass('appended');
+    //     //   $(this).css('opacity','0');
+    //     //   $(this).appendTo('#entries .masonry');
+    //     // });
+
+    //     var $items = $(".hidden-entries").html();
+    //     $container.append( $items ).masonry( 'appended', $items );
+        
+    //     // if(entries) {
+    //     //   $container.masonry('destroy');
+    //     //   setTimeout(function(){
+    //     //     do_masonry()
+    //     //   },100);
+    //     //   setTimeout(function(){
+    //     //     smoothScroll('#firstAppended');
+    //     //   },500);
+    //     //   setTimeout(function(){
+    //     //     $('#entries .masonry .appended').each(function(){
+    //     //       $(this).css('opacity',1);
+    //     //     });
+    //     //   },1100);
+    //     // }
+
+
+    //   }
+
+    // });
+
   });
+
+
+  
 
   function smoothScroll(hashTag) {
     var target = $(hashTag);
