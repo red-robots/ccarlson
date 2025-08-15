@@ -204,10 +204,10 @@ jQuery(document).ready(function($){
         $masonry.append(newItems);
         $masonry.masonry( 'appended', newItems );
         $masonry.imagesLoaded(function() {
-          $masonry.masonry('layout');
-          // setTimeout(function(){
-          //   $masonry.masonry('layout');
-          // }, 500);
+          //$masonry.masonry('layout');
+          setTimeout(function(){
+            $masonry.masonry('layout');
+          }, 500);
         });
       }
     });
