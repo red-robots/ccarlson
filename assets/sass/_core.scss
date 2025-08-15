@@ -1494,14 +1494,15 @@ body.page-template-page-portfolio {
   }
 }
 .masonry .grid-item {
+  // transition: transform ease .2s, opacity ease .8s;
   transition: opacity ease .8s;
 }
-.masonry .grid-item.is-appended {
-  opacity: 0;
-  &.is-visible {
-    opacity: 1;
-  }
-}
+// .masonry .grid-item.is-appended {
+//   opacity: 0;
+//   &.is-visible {
+//     opacity: 1;
+//   }
+// }
 
 .gallery-list {
   padding-bottom: 80px;
