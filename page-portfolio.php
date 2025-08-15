@@ -217,6 +217,7 @@ jQuery(document).ready(function($){
         $masonry.imagesLoaded(function() {
           setTimeout(function(){
             $masonry.masonry('layout');
+            do_fancy_popup();
           }, 400);
         });
 
@@ -271,6 +272,19 @@ jQuery(document).ready(function($){
     // });
 
   });
+
+
+  function do_fancy_popup() {
+    $('.popup-gallery').fancybox({
+      buttons : ['fullScreen','close'],
+      touch : true,
+      hash : false,
+      transitionEffect: 'none', // Applies to open/close/next/prev transitions
+      transitionDuration: 0, // Set duration to 0 for immediate changes
+      animationEffect: 'none', // Applies to animation effects like zoom/fade
+      animationDuration: 0 // Set
+    });
+  }
 
 
   
