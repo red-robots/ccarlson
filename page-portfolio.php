@@ -203,17 +203,17 @@ jQuery(document).ready(function($){
 
         $masonry.append(newItems);
         $masonry.masonry( 'appended', newItems );
-        // $masonry.imagesLoaded(function() {
-        //   setTimeout(function(){
-        //     $masonry.masonry('layout');
-        //   }, 500);
-        // });
-
-        setTimeout(function(){
-          $masonry.imagesLoaded(function() {
+        $masonry.imagesLoaded(function() {
+          setTimeout(function(){
             $masonry.masonry('layout');
-          });
-        }, 600);
+          }, 600);
+        });
+
+        // setTimeout(function(){
+        //   $masonry.imagesLoaded(function() {
+        //     $masonry.masonry('layout');
+        //   });
+        // }, 600);
       }
     });
 
