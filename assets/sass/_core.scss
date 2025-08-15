@@ -1495,7 +1495,7 @@ body.page-template-page-portfolio {
 }
 .masonry .grid-item {
   // transition: transform ease .2s, opacity ease .8s;
-  transition: opacity ease .8s;
+  transition: opacity ease .5s!important;
 }
 // .masonry .grid-item.is-appended {
 //   opacity: 0;
