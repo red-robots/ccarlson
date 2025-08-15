@@ -201,14 +201,14 @@ jQuery(document).ready(function($){
       if(newItems.length) {
         //$container.append(newItems).masonry( 'appended', newItems ).masonry('layout');
 
+        $container.append(newItems);
+        $container.masonry( 'appended', newItems );
+
         $container.imagesLoaded(function() {
-          $container.append(newItems);
-          $container.masonry( 'appended', newItems );
           setTimeout(function(){
             $container.masonry('layout');
             $container.find('.is-appended').addClass('is-visible');
-          }, 100);
-          
+          }, 500);
         });
       }
     });
