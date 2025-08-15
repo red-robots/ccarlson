@@ -129,7 +129,7 @@ if ($categories) {
               <div class="fbox grid-item<?php echo $is_appended ?>">
                 <figure class="the-image">
                   <a href="<?php echo $main_photo['url'] ?>" class="imageLink popup-gallery" data-fancybox="gallery"<?php echo $popup_caption ?>>
-                    <img src="<?php echo $main_photo['url'] ?>" alt="<?php echo $main_photo['title'] ?>" />
+                    <img src="<?php echo $main_photo['url'] ?>" alt="<?php echo $main_photo['title'] ?>" class="lazyload" />
                     <figcaption>
                       <div class="title"><?php echo $product_title ?></div>
                       <?php if ($painting_size) { ?>
@@ -203,12 +203,17 @@ jQuery(document).ready(function($){
 
         $masonry.append(newItems);
         $masonry.masonry( 'appended', newItems );
-        $masonry.imagesLoaded(function() {
-          //$masonry.masonry('layout');
-          setTimeout(function(){
+        // $masonry.imagesLoaded(function() {
+        //   setTimeout(function(){
+        //     $masonry.masonry('layout');
+        //   }, 500);
+        // });
+
+        setTimeout(function(){
+          $masonry.imagesLoaded(function() {
             $masonry.masonry('layout');
-          }, 500);
-        });
+          });
+        }, 600);
       }
     });
 
