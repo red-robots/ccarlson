@@ -173,7 +173,7 @@ jQuery(document).ready(function($){
       itemSelector: '.grid-item',
       columnWidth: '.grid-sizer',
       percentPosition: true,
-      stagger: 10,
+      stagger: 20,
       visibleStyle: { opacity: 1 },
       hiddenStyle: { opacity: 0 },  
     });
@@ -206,7 +206,7 @@ jQuery(document).ready(function($){
         $masonry.imagesLoaded(function() {
           setTimeout(function(){
             $masonry.masonry('layout');
-          }, 600);
+          }, 400);
         });
 
         // setTimeout(function(){
