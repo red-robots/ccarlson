@@ -17,6 +17,21 @@ jQuery(document).ready(function ($) {
   //   });
   // }
 
+  if( $('#mobile-primary-menu li.menu-item-has-children').length ) {
+    $('#mobile-primary-menu li.menu-item-has-children').each(function(){
+      var $parent = $(this).find('a').eq(0).addClass('menu-parent');
+      $parent.wrap('<div class="mobile-folder-title" />');
+      $('<button class="mobile-dropdown-btn button-dropdown" aria-expanded="false" aria-label="'+$parent.text()+' dropdown"><i class="fa-solid fa-chevron-down"></i></button>').insertAfter($parent);
+    });
+  }
+
+  $(document).on('click', '.mobile-dropdown-btn', function(e){
+    e.preventDefault();
+    var isExpanded = $(this).attr('aria-expanded') === 'true';
+    $(this).attr('aria-expanded', !isExpanded);
+    $(this).parent().next('ul.sub-menu').slideToggle();
+  });
+
   $(document).on('click','.mobileNavContent .submenu-toggle', function(e){
     e.preventDefault();
     var current = $(this);
